@@ -6,7 +6,16 @@
 //  Copyright (c) 2015年 吴海超. All rights reserved.
 //
 
+/*
+ *  qq:712641411
+ *  iOS大神qq群:460122071
+ *  gitHub:https://github.com/netyouli
+ *  csdn:http://blog.csdn.net/windwhc/article/category/3117381
+ */
+
+
 #import "AppDelegate.h"
+#import "ViewController.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +26,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    _window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    UINavigationController  * nv = [[UINavigationController alloc]initWithRootViewController:[ViewController new]];
+    _window.rootViewController = nv;
+    [_window makeKeyAndVisible];
     return YES;
 }
 
