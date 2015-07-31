@@ -151,8 +151,8 @@
         cell = [[WHC_PhotoListCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kWHC_CellName];
     }
     cell.delegate = self;
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.listColumn = _listColumn;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     [cell setAssets:[self getRowAssets:indexPath.row]];
     return cell;
 }

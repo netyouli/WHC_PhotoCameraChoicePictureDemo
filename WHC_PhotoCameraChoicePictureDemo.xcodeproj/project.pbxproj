@@ -16,8 +16,6 @@
 		C3E7294C1B69D62B0030EA9C /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3E7294B1B69D62B0030EA9C /* ViewController.xib */; };
 		C3E729591B69E9960030EA9C /* WHC_PhotoListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E729501B69E9960030EA9C /* WHC_PhotoListCell.m */; };
 		C3E7295A1B69E9960030EA9C /* WHC_Asset.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E729521B69E9960030EA9C /* WHC_Asset.m */; };
-		C3E729601B69E9C20030EA9C /* Overlay.png in Resources */ = {isa = PBXBuildFile; fileRef = C3E7295E1B69E9C20030EA9C /* Overlay.png */; };
-		C3E729611B69E9C20030EA9C /* Overlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3E7295F1B69E9C20030EA9C /* Overlay@2x.png */; };
 		C3E7297A1B6A18620030EA9C /* WHC_CameraVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E729721B6A18620030EA9C /* WHC_CameraVC.m */; };
 		C3E7297B1B6A18620030EA9C /* WHC_CameraVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3E729731B6A18620030EA9C /* WHC_CameraVC.xib */; };
 		C3E7297C1B6A18620030EA9C /* WHC_ChoicePictureVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E729751B6A18620030EA9C /* WHC_ChoicePictureVC.m */; };
@@ -57,8 +55,6 @@
 		C3E729501B69E9960030EA9C /* WHC_PhotoListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHC_PhotoListCell.m; sourceTree = "<group>"; };
 		C3E729511B69E9960030EA9C /* WHC_Asset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHC_Asset.h; sourceTree = "<group>"; };
 		C3E729521B69E9960030EA9C /* WHC_Asset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHC_Asset.m; sourceTree = "<group>"; };
-		C3E7295E1B69E9C20030EA9C /* Overlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Overlay.png; sourceTree = "<group>"; };
-		C3E7295F1B69E9C20030EA9C /* Overlay@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Overlay@2x.png"; sourceTree = "<group>"; };
 		C3E729711B6A18620030EA9C /* WHC_CameraVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHC_CameraVC.h; sourceTree = "<group>"; };
 		C3E729721B6A18620030EA9C /* WHC_CameraVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHC_CameraVC.m; sourceTree = "<group>"; };
 		C3E729731B6A18620030EA9C /* WHC_CameraVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WHC_CameraVC.xib; sourceTree = "<group>"; };
@@ -167,8 +163,6 @@
 				C3E729781B6A18620030EA9C /* WHC_PictureListVC.m */,
 				C3E729791B6A18620030EA9C /* WHC_PictureListVC.xib */,
 				C3E7294E1B69E9960030EA9C /* cell */,
-				C3E7295E1B69E9C20030EA9C /* Overlay.png */,
-				C3E7295F1B69E9C20030EA9C /* Overlay@2x.png */,
 			);
 			path = WHCLib;
 			sourceTree = "<group>";
@@ -266,8 +260,6 @@
 			files = (
 				C3E7297F1B6A18620030EA9C /* WHC_PictureListVC.xib in Resources */,
 				C3E7297D1B6A18620030EA9C /* WHC_ChoicePictureVC.xib in Resources */,
-				C3E729611B69E9C20030EA9C /* Overlay@2x.png in Resources */,
-				C3E729601B69E9C20030EA9C /* Overlay.png in Resources */,
 				C3E729361B69D5AC0030EA9C /* LaunchScreen.xib in Resources */,
 				C3E7294C1B69D62B0030EA9C /* ViewController.xib in Resources */,
 				C3E729851B6A1B0C0030EA9C /* b.jpg in Resources */,
@@ -488,6 +480,7 @@
 				C3E729471B69D5AC0030EA9C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C3E729481B69D5AC0030EA9C /* Build configuration list for PBXNativeTarget "WHC_PhotoCameraChoicePictureDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -496,6 +489,7 @@
 				C3E7294A1B69D5AC0030EA9C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

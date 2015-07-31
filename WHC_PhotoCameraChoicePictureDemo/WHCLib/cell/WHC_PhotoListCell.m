@@ -17,13 +17,15 @@
 #import "WHC_PhotoListCell.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "WHC_Asset.h"
-#define kCellHeight  (80.0)
-#define kPad         (5.0)
-
+#define kCellHeight     (80.0)
+#define kPad            (5.0)
+#define kCircleRadius   (10.0)
 @interface WHC_PhotoListCell (){
     NSArray          *  assetGroup;
     NSMutableArray   *  overlayImageArr;
     NSMutableArray   *  imageViewArr;
+    UIImage          *  overlayImage;
+    CGFloat             imageWidth;
 }
 
 @end
@@ -34,6 +36,35 @@
     return kCellHeight;
 }
 
+- (void)makeOverlayImageWithWidth:(CGFloat)width{
+    if(overlayImage == nil){
+        UIGraphicsBeginImageContext(CGSizeMake(width, kCellHeight - kPad));
+        CGContextRef  context = UIGraphicsGetCurrentContext();
+        CGContextSetFillColorWithColor(context, [UIColor colorWithWhite:1.0 alpha:0.15].CGColor);
+        CGContextAddRect(context, CGRectMake(0.0, 0.0, width, kCellHeight - kPad));
+        CGContextDrawPath(context, kCGPathFill);
+        
+        CGContextSaveGState(context);
+        CGContextSetStrokeColorWithColor(context, [UIColor whiteColor].CGColor);
+        CGContextSetFillColorWithColor(context, [UIColor blueColor].CGColor);
+        CGContextSetLineWidth(context, 1.0);
+        CGContextAddArc(context, width - kPad - kCircleRadius, kCellHeight - kPad * 2.0 - kCircleRadius, kCircleRadius, 0, M_PI * 2.0, NO);
+        CGContextDrawPath(context, kCGPathFillStroke);
+        CGContextRestoreGState(context);
+        
+        CGContextSaveGState(context);
+        CGContextSetStrokeColorWithColor(context, [UIColor whiteColor].CGColor);
+        CGContextMoveToPoint(context, width - kCircleRadius * 2.0 , kCellHeight - kPad * 2.0 - kCircleRadius);
+        CGContextAddLineToPoint(context, width - kPad - kCircleRadius, kCellHeight - kPad * 3.0);
+        CGContextAddLineToPoint(context, width - kPad * 2.0, kCellHeight - kPad * 3.0 - kCircleRadius);
+        CGContextDrawPath(context, kCGPathStroke);
+        CGContextRestoreGState(context);
+        
+        overlayImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+    }
+}
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -42,15 +73,15 @@
         UITapGestureRecognizer  * tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(cellForTapGesture:)];
         [self addGestureRecognizer:tapGesture];
         
-        imageViewArr = [NSMutableArray arrayWithCapacity:4];
-        overlayImageArr = [NSMutableArray arrayWithCapacity:4];
-        [self setAssets:assetGroup];
+        imageViewArr = [NSMutableArray array];
+        overlayImageArr = [NSMutableArray array];
     }
     return self;
 }
 
 -(void)setAssets:(NSArray*)assets{
-    
+    imageWidth = (CGRectGetWidth([UIScreen mainScreen].bounds) - (_listColumn + 1) * kPad) / _listColumn;
+    [self makeOverlayImageWithWidth:imageWidth];
     assetGroup = assets;
     for (UIImageView  * iv in imageViewArr) {
         [iv removeFromSuperview];
@@ -72,7 +103,7 @@
             UIImageView  * tempOverlayImageView = overlayImageArr[i];
             tempOverlayImageView.hidden = !whcAS.selected;
         }else{
-            UIImageView  * tempOverlayImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"Overlay.png"]];
+            UIImageView  * tempOverlayImageView = [[UIImageView alloc]initWithImage:overlayImage];
             tempOverlayImageView.hidden = !whcAS.selected;
             [overlayImageArr addObject:tempOverlayImageView];
         }
@@ -80,7 +111,6 @@
 }
 
 -(void)layoutSubviews{
-    
     NSInteger  count = assetGroup.count;
     CGFloat  width = (CGRectGetWidth([UIScreen mainScreen].bounds) - (_listColumn + 1) * kPad) / _listColumn;
     for (NSInteger i = 0; i < count; i++) {
@@ -96,9 +126,8 @@
 
 -(void)cellForTapGesture:(UITapGestureRecognizer *)tap{
     
-    CGFloat  width = (CGRectGetWidth([UIScreen mainScreen].bounds) - (_listColumn + 1) * kPad) / _listColumn;
     CGPoint  point = [tap locationInView:self];
-    CGRect   frame = CGRectMake(kPad, kPad, width, kCellHeight - kPad);
+    CGRect   frame = CGRectMake(kPad, kPad, imageWidth, kCellHeight - kPad);
     for (NSInteger i = 0; i < assetGroup.count; i++) {
         if(CGRectContainsPoint(frame, point)){
             BOOL  choiceState = NO;
@@ -122,7 +151,7 @@
             }
             break;
         }
-        frame.origin.x += width + kPad;
+        frame.origin.x += imageWidth + kPad;
     }
 }
 
