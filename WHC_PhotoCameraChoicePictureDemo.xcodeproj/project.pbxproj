@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C3DACBF91B6B08E200F4DF03 /* b.png in Resources */ = {isa = PBXBuildFile; fileRef = C3DACBF81B6B08E200F4DF03 /* b.png */; };
 		C3E729281B69D5AB0030EA9C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E729271B69D5AB0030EA9C /* main.m */; };
 		C3E7292B1B69D5AB0030EA9C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E7292A1B69D5AB0030EA9C /* AppDelegate.m */; };
 		C3E7292E1B69D5AB0030EA9C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E7292D1B69D5AB0030EA9C /* ViewController.m */; };
@@ -24,7 +25,6 @@
 		C3E7297F1B6A18620030EA9C /* WHC_PictureListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3E729791B6A18620030EA9C /* WHC_PictureListVC.xib */; };
 		C3E729811B6A19110030EA9C /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = C3E729801B6A19110030EA9C /* README.md */; };
 		C3E729841B6A1B0C0030EA9C /* a.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C3E729821B6A1B0C0030EA9C /* a.jpg */; };
-		C3E729851B6A1B0C0030EA9C /* b.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C3E729831B6A1B0C0030EA9C /* b.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C3DACBF81B6B08E200F4DF03 /* b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = b.png; sourceTree = "<group>"; };
 		C3E729221B69D5AB0030EA9C /* WHC_PhotoCameraChoicePictureDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WHC_PhotoCameraChoicePictureDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3E729261B69D5AB0030EA9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C3E729271B69D5AB0030EA9C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -66,7 +67,6 @@
 		C3E729791B6A18620030EA9C /* WHC_PictureListVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WHC_PictureListVC.xib; sourceTree = "<group>"; };
 		C3E729801B6A19110030EA9C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		C3E729821B6A1B0C0030EA9C /* a.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = a.jpg; sourceTree = "<group>"; };
-		C3E729831B6A1B0C0030EA9C /* b.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = b.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,7 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				C3E729821B6A1B0C0030EA9C /* a.jpg */,
-				C3E729831B6A1B0C0030EA9C /* b.jpg */,
+				C3DACBF81B6B08E200F4DF03 /* b.png */,
 				C3E7294D1B69E9960030EA9C /* WHCLib */,
 				C3E729291B69D5AB0030EA9C /* AppDelegate.h */,
 				C3E7292A1B69D5AB0030EA9C /* AppDelegate.m */,
@@ -260,9 +260,9 @@
 			files = (
 				C3E7297F1B6A18620030EA9C /* WHC_PictureListVC.xib in Resources */,
 				C3E7297D1B6A18620030EA9C /* WHC_ChoicePictureVC.xib in Resources */,
+				C3DACBF91B6B08E200F4DF03 /* b.png in Resources */,
 				C3E729361B69D5AC0030EA9C /* LaunchScreen.xib in Resources */,
 				C3E7294C1B69D62B0030EA9C /* ViewController.xib in Resources */,
-				C3E729851B6A1B0C0030EA9C /* b.jpg in Resources */,
 				C3E729841B6A1B0C0030EA9C /* a.jpg in Resources */,
 				C3E7297B1B6A18620030EA9C /* WHC_CameraVC.xib in Resources */,
 				C3E729331B69D5AB0030EA9C /* Images.xcassets in Resources */,

@@ -7,9 +7,9 @@
 iOS从相册和相机选择图片进行封装，从相册支持选择多张和一张控制，集成使用简单方便，具体看demo使用集成方式。
 
 ##运行效果
-![image](https://github.com/netyouli/WHC_GestureUnlockScreenDemo/tree/master/WHC_GestureUnlockScreenDemo/gif/b.png)
+![image](https://github.com/netyouli/WHC_PhotoCameraChoicePictureDemo/tree/master/WHC_PhotoCameraChoicePictureDemo/gif/b.png)
 可以左右滚动浏览所选图片
-![image](https://github.com/netyouli/WHC_GestureUnlockScreenDemo/tree/master/WHC_GestureUnlockScreenDemo/gif/a.png)
+![image](https://github.com/netyouli/WHC_PhotoCameraChoicePictureDemo/tree/master/WHC_PhotoCameraChoicePictureDemo/gif/a.jpg)
 ##接口使用实例
 ####Use Example
 ```objective-c
