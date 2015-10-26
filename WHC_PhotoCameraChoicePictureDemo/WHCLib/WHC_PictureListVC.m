@@ -123,8 +123,8 @@
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     WHC_ChoicePictureVC  * vc = [WHC_ChoicePictureVC new];
     vc.delegate = _delegate;
+    vc.maxChoiceImageNumber = _maxChoiceImageNumberumber;
     vc.assetsGroup = _assetsGroupArr[indexPath.row];
-    vc.choiceMorePicture = _choiceMorePicture;
     [self.navigationController pushViewController:vc animated:YES];
 }
 /*

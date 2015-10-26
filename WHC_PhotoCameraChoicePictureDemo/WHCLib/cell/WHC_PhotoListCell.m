@@ -40,19 +40,20 @@
     if(overlayImage == nil){
         UIGraphicsBeginImageContext(CGSizeMake(width, kCellHeight - kPad));
         CGContextRef  context = UIGraphicsGetCurrentContext();
-        CGContextSetFillColorWithColor(context, [UIColor colorWithWhite:1.0 alpha:0.15].CGColor);
+        CGContextSetFillColorWithColor(context, [UIColor colorWithWhite:1.0 alpha:0.5].CGColor);
         CGContextAddRect(context, CGRectMake(0.0, 0.0, width, kCellHeight - kPad));
         CGContextDrawPath(context, kCGPathFill);
         
         CGContextSaveGState(context);
         CGContextSetStrokeColorWithColor(context, [UIColor whiteColor].CGColor);
         CGContextSetFillColorWithColor(context, [UIColor blueColor].CGColor);
-        CGContextSetLineWidth(context, 1.0);
+        CGContextSetLineWidth(context, 1.5);
         CGContextAddArc(context, width - kPad - kCircleRadius, kCellHeight - kPad * 2.0 - kCircleRadius, kCircleRadius, 0, M_PI * 2.0, NO);
         CGContextDrawPath(context, kCGPathFillStroke);
         CGContextRestoreGState(context);
         
         CGContextSaveGState(context);
+        CGContextSetLineWidth(context, 1.5);
         CGContextSetStrokeColorWithColor(context, [UIColor whiteColor].CGColor);
         CGContextMoveToPoint(context, width - kCircleRadius * 2.0 , kCellHeight - kPad * 2.0 - kCircleRadius);
         CGContextAddLineToPoint(context, width - kPad - kCircleRadius, kCellHeight - kPad * 3.0);
@@ -131,10 +132,11 @@
     for (NSInteger i = 0; i < assetGroup.count; i++) {
         if(CGRectContainsPoint(frame, point)){
             BOOL  choiceState = NO;
-            if(_delegate && [_delegate respondsToSelector:@selector(WHCPhotoListIsMoreChoicePhoto)]){
-                choiceState = [_delegate WHCPhotoListIsMoreChoicePhoto];
-            }
             WHC_Asset  * whcAS = assetGroup[i];
+            if(_delegate && [_delegate respondsToSelector:@selector(WHCPhotoListCurrentChoiceState:)]){
+                choiceState = [_delegate WHCPhotoListCurrentChoiceState:whcAS.selected];
+            }
+            
             if(choiceState){
                 whcAS.selected = !whcAS.selected;
                 UIImageView * overlayImageView = overlayImageArr[i];
@@ -157,7 +159,7 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated{
     [super setSelected:selected animated:animated];
-
+    
     // Configure the view for the selected state
 }
 

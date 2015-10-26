@@ -21,7 +21,11 @@
 
 #define kWHC_CellName     (@"WHC_PhotoListCellName")
 
-@interface ViewController ()<WHC_ChoicePictureVCDelegate,WHC_CameraVCDelegate>
+@interface ViewController ()<WHC_ChoicePictureVCDelegate,WHC_CameraVCDelegate>{
+    NSMutableArray  * _imageArr;
+    NSString        * _filePath;
+    NSString        * _fileName;
+}
 
 @property  (nonatomic , strong)IBOutlet UIScrollView  * imageSV;
 @end
@@ -31,6 +35,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"WHC：iOS技术群 460122071";
+    _imageArr = [NSMutableArray array];
     // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -45,14 +50,14 @@
         case 0:{//从相册选择一张
             WHC_PictureListVC  * vc = [WHC_PictureListVC new];
             vc.delegate = self;
-            vc.choiceMorePicture = NO;
+            vc.maxChoiceImageNumberumber = 1;
             [self presentViewController:[[UINavigationController alloc]initWithRootViewController:vc] animated:YES completion:nil];
         }
             break;
         case 1:{//从相册选择多张
             WHC_PictureListVC  * vc = [WHC_PictureListVC new];
             vc.delegate = self;
-            vc.choiceMorePicture = YES;
+            vc.maxChoiceImageNumberumber = 3;
             [self presentViewController:[[UINavigationController alloc]initWithRootViewController:vc] animated:YES completion:nil];
         }
             break;
@@ -74,6 +79,8 @@
             [subView removeFromSuperview];
         }
     }
+    [_imageArr removeAllObjects];
+    _imageArr = photoArr.mutableCopy;
     for (NSInteger i = 0; i < photoArr.count; i++) {
         UIImageView * imageView = [[UIImageView alloc]initWithFrame:CGRectMake(i * CGRectGetWidth(_imageSV.frame), 0, CGRectGetWidth(_imageSV.frame), CGRectGetHeight(_imageSV.frame))];
         imageView.image = photoArr[i];
@@ -84,6 +91,8 @@
 
 #pragma mark - WHC_CameraVCDelegate
 - (void)WHCCameraVC:(WHC_CameraVC *)cameraVC didSelectedPhoto:(UIImage *)photo{
+    [_imageArr removeAllObjects];
+    [_imageArr addObject:photo];
     [self WHCChoicePictureVC:nil didSelectedPhotoArr:@[photo]];
 }
 @end

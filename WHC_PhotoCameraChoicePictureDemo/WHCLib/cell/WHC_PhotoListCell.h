@@ -17,7 +17,7 @@
 
 @protocol WHC_PhotoListCellDelegate <NSObject>
 
-- (BOOL)WHCPhotoListIsMoreChoicePhoto;
+- (BOOL)WHCPhotoListCurrentChoiceState:(BOOL)selected;
 
 - (void)WHCPhotoListCancelChoicePhoto;
 @end

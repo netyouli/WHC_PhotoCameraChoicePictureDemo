@@ -26,6 +26,6 @@
 
 @interface WHC_ChoicePictureVC : UIViewController
 @property (nonatomic , assign)id <WHC_ChoicePictureVCDelegate> delegate;
-@property (nonatomic , assign , getter=isChoiceMorePicture)BOOL   choiceMorePicture;
+@property (nonatomic , assign)NSInteger maxChoiceImageNumber;
 @property (nonatomic , strong) ALAssetsGroup  * assetsGroup;
 @end

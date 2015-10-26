@@ -20,6 +20,8 @@
 
 #define kWHC_ShowPictureWidth     (80)           //默认展示宽度为80
 #define kWHC_CellName             (@"WHC_ChoicePictureVC")
+
+#define kChoiceTitle              (@"已选择(%d / %d)")
 @interface WHC_ChoicePictureVC ()<WHC_PhotoListCellDelegate>{
     NSMutableArray         * _assetArr;          //相册集合
     NSInteger                _listColumn;        //列表列
@@ -37,7 +39,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"选择照片";
+    self.navigationItem.title = [NSString stringWithFormat:kChoiceTitle , (int)self.maxChoiceImageNumber , 0];
     [self initData];
     [self layoutUI];
     // Do any additional setup after loading the view from its nib.
@@ -55,6 +57,7 @@
 
 - (void)layoutUI{
     UIBarButtonItem  * doneBarItem = [[UIBarButtonItem alloc]initWithTitle:@"完成" style:UIBarButtonItemStyleDone target:self action:@selector(clickDone:)];
+    doneBarItem.tintColor = [UIColor whiteColor];
     self.navigationItem.rightBarButtonItem = doneBarItem;
 }
 
@@ -114,23 +117,33 @@
     });
 }
 
-#pragma mark - WHC_PhotoListCellDelegate
-- (BOOL)WHCPhotoListIsMoreChoicePhoto{
-    if(_choiceMorePicture){
-        return YES;
-    }else{
-        if(_choiceState){
-            return NO;
-        }else{
-            _choiceState = YES;
-            return YES;
+- (NSInteger)getChoicedImageCount{
+    NSInteger count = 0;
+    for (WHC_Asset * whcAS in _assetArr) {
+        if(whcAS.selected) {
+            ++count;
         }
     }
+    return count;
+}
+
+#pragma mark - WHC_PhotoListCellDelegate
+- (BOOL)WHCPhotoListCurrentChoiceState:(BOOL)selected{
+    BOOL isChoiced = NO;
+    NSInteger count = [self getChoicedImageCount];
+    if (selected) {
+        self.navigationItem.title = [NSString stringWithFormat:kChoiceTitle ,(int)self.maxChoiceImageNumber , (int)count - 1];
+    }else if (self.maxChoiceImageNumber > count){
+        self.navigationItem.title = [NSString stringWithFormat:kChoiceTitle ,(int)self.maxChoiceImageNumber , (int)count + 1];
+        isChoiced = YES;
+    }
+    return isChoiced;
 }
 
 - (void)WHCPhotoListCancelChoicePhoto{
     _choiceState = NO;
 }
+
 #pragma mark - UITableViewDelegate UITableViewDataSource
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -158,13 +171,13 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

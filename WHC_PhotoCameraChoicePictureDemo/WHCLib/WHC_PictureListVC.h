@@ -18,5 +18,5 @@
 #import "WHC_ChoicePictureVC.h"
 @interface WHC_PictureListVC : UIViewController
 @property (nonatomic , assign)id <WHC_ChoicePictureVCDelegate> delegate;
-@property (nonatomic , assign , getter=isChoiceMorePicture)BOOL   choiceMorePicture;
+@property (nonatomic , assign)NSInteger maxChoiceImageNumberumber;
 @end
