@@ -1,10 +1,8 @@
 # WHC_PhotoCameraChoicePictureDemo
-/*
-*  qq:712641411
-*  iOS大神qq群:460122071
-*/
+##  作者:吴海超
+##  联系qq:712641411
 
-iOS从相册和相机选择图片进行封装，从相册支持选择多张和一张控制，集成使用简单方便，具体看demo使用集成方式。
+##iOS从相册和相机选择图片进行封装，从相册支持选择多张和一张控制，集成使用简单方便，具体看demo使用集成方式。
 
 ##运行效果
 ![image](https://github.com/netyouli/WHC_PhotoCameraChoicePictureDemo/tree/master/WHC_PhotoCameraChoicePictureDemo/gif/b.png)
